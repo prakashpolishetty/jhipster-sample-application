@@ -1,0 +1,86 @@
+
+application {
+  config {
+    baseName universty,
+    applicationType monolith,
+    packageName com.universty,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    clientFramework angular,
+    serverPort 8010
+    }
+  entities *
+}
+
+entity Student {
+ studentId UUID required,
+ name String required,
+ dateOfBirth String pattern(/^(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d|3[01])-(\\d{2})$/),
+ phoneNumber String pattern(/^\\+1 [1-9]\\d{2}-\\d{3}-\\d{4}$/),
+ personalEmailId String,
+ universityEmailId String,
+ department Department,
+ isActive Boolean,
+ isDegreeCompleted Boolean,
+ currentSem Enum,
+ courses Course,
+ address Address
+}
+
+entity Department{
+departmentId Integer  required,
+departmentName Enum  required,
+isActive Boolean ,
+courses Course 
+teachers Teacher 
+}
+entity Course{
+courseId String  required pattern(/^[A-Za-z]\\d{3}$/)
+coursename Enum  required,
+description String ,
+isActive Boolean ,
+department Department ,
+startDateOfEnrollment String pattern(/^(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d|3[01])-(\\d{2})$/),
+lastDateOfEnrollment String pattern(/^(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d|3[01])-(\\d{2})$/),
+startDateOfCourse String pattern(/^(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d|3[01])-(\\d{2})$/),
+lastDateOfCourse String pattern(/^(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d|3[01])-(\\d{2})$/),
+lastDateOfCouseDrop String pattern(/^(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d|3[01])-(\\d{2})$/),
+waitingList Integer,
+numberOfEnrollments Integer,
+isEnrollmentRestricted Boolean,
+teacher Teacher,
+grader Teacher,
+classRoomNumber String,
+courseType Enum,
+grade Double 
+}
+entity Teacher{
+faculityId UUID required,
+name String required,
+phoneNumber String required pattern(/^\\+1 [1-9]\\d{2}-\\d{3}-\\d{4}$/),
+desigination Enum,
+personalEmailId String,
+universityEmailId String,
+courses Course,
+isActive Boolean,
+department Department,
+dateOfJoining String pattern(/^(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d|3[01])-(\\d{2})$/),
+dateOfLeaving String pattern(/^(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d|3[01])-(\\d{2})$/),
+address Address
+}
+
+
+entity Address {
+lineOne String required,
+lineTwo String,
+aptNo String,
+city String,
+state String,
+country String,
+pinCode String  pattern(/^[1-9]0{4}$/)
+}
+
+
+
+
+    
