@@ -1,0 +1,108 @@
+{
+  "applications": ["universty"],
+  "changelogDate": "20230522170803",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "course",
+  "fields": [
+    {
+      "fieldName": "courseId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "pattern"],
+      "fieldValidateRulesPattern": "^[A-Za-z]\\\\d{3}$"
+    },
+    {
+      "fieldName": "courseName",
+      "fieldType": "CourseName",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "DATASTRUCTURES,ADVANCEOPERATINGSYSTEMS,FSS"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isActive",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "department",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "degreeType",
+      "fieldType": "DegreeType",
+      "fieldValues": "BACHELORS,MASTERS,PHD"
+    },
+    {
+      "fieldName": "isCore",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "specialization",
+      "fieldType": "Specialization",
+      "fieldValues": "COMPUTERSCIENCE,DATASCIENCE,BUSINESSMANAGEMENT,BUINESSANALYTICS"
+    },
+    {
+      "fieldName": "startDateOfEnrollment",
+      "fieldType": "String",
+      "fieldValidateRules": ["pattern"],
+      "fieldValidateRulesPattern": "^(0[1-9]|1[0-2])-(0[1-9]|1\\\\d|2\\\\d|3[01])-(\\\\d{2})$"
+    },
+    {
+      "fieldName": "lastDateOfEnrollment",
+      "fieldType": "String",
+      "fieldValidateRules": ["pattern"],
+      "fieldValidateRulesPattern": "^(0[1-9]|1[0-2])-(0[1-9]|1\\\\d|2\\\\d|3[01])-(\\\\d{2})$"
+    },
+    {
+      "fieldName": "startDateOfCourse",
+      "fieldType": "String",
+      "fieldValidateRules": ["pattern"],
+      "fieldValidateRulesPattern": "^(0[1-9]|1[0-2])-(0[1-9]|1\\\\d|2\\\\d|3[01])-(\\\\d{2})$"
+    },
+    {
+      "fieldName": "lastDateOfCourse",
+      "fieldType": "String",
+      "fieldValidateRules": ["pattern"],
+      "fieldValidateRulesPattern": "^(0[1-9]|1[0-2])-(0[1-9]|1\\\\d|2\\\\d|3[01])-(\\\\d{2})$"
+    },
+    {
+      "fieldName": "lastDateOfCourseDrop",
+      "fieldType": "String",
+      "fieldValidateRules": ["pattern"],
+      "fieldValidateRulesPattern": "^(0[1-9]|1[0-2])-(0[1-9]|1\\\\d|2\\\\d|3[01])-(\\\\d{2})$"
+    },
+    {
+      "fieldName": "waitingList",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "numberOfEnrollments",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "isEnrollmentRestricted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "teacherID",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "graderID",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "classRoomNumber",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Course",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

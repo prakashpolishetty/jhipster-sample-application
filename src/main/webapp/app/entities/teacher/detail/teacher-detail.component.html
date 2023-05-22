@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="teacher">
+      <h2 data-cy="teacherDetailsHeading"><span jhiTranslate="universtyApp.teacher.detail.title">Teacher</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ teacher.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.teacher.facultyId">Faculty Id</span></dt>
+        <dd>
+          <span>{{ teacher.facultyId }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.teacher.name">Name</span></dt>
+        <dd>
+          <span>{{ teacher.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.teacher.phoneNumber">Phone Number</span></dt>
+        <dd>
+          <span>{{ teacher.phoneNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.teacher.designation">Designation</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'universtyApp.Desigination.' + teacher.designation }}">{{ teacher.designation }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.teacher.personalEmailId">Personal Email Id</span></dt>
+        <dd>
+          <span>{{ teacher.personalEmailId }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.teacher.universityEmailId">University Email Id</span></dt>
+        <dd>
+          <span>{{ teacher.universityEmailId }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.teacher.isActive">Is Active</span></dt>
+        <dd>
+          <span>{{ teacher.isActive }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.teacher.departmentId">Department Id</span></dt>
+        <dd>
+          <span>{{ teacher.departmentId }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.teacher.dateOfJoining">Date Of Joining</span></dt>
+        <dd>
+          <span>{{ teacher.dateOfJoining }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.teacher.dateOfLeaving">Date Of Leaving</span></dt>
+        <dd>
+          <span>{{ teacher.dateOfLeaving }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/teacher', teacher.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

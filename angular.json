@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "jhipster-sample-application": {
+    "universty": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -76,15 +76,15 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "jhipster-sample-application:build:development",
+            "browserTarget": "universty:build:development",
             "port": 4200
           },
           "configurations": {
             "production": {
-              "browserTarget": "jhipster-sample-application:build:production"
+              "browserTarget": "universty:build:production"
             },
             "development": {
-              "browserTarget": "jhipster-sample-application:build:development"
+              "browserTarget": "universty:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -1,0 +1,11 @@
+{
+  "universtyApp": {
+    "Specialization": {
+      "null": "",
+      "COMPUTERSCIENCE": "COMPUTERSCIENCE",
+      "DATASCIENCE": "DATASCIENCE",
+      "BUSINESSMANAGEMENT": "BUSINESSMANAGEMENT",
+      "BUINESSANALYTICS": "BUINESSANALYTICS"
+    }
+  }
+}

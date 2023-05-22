@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="student">
+      <h2 data-cy="studentDetailsHeading"><span jhiTranslate="universtyApp.student.detail.title">Student</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ student.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.student.studentId">Student Id</span></dt>
+        <dd>
+          <span>{{ student.studentId }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.student.name">Name</span></dt>
+        <dd>
+          <span>{{ student.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.student.dateOfBirth">Date Of Birth</span></dt>
+        <dd>
+          <span>{{ student.dateOfBirth }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.student.phoneNumber">Phone Number</span></dt>
+        <dd>
+          <span>{{ student.phoneNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.student.personalEmailId">Personal Email Id</span></dt>
+        <dd>
+          <span>{{ student.personalEmailId }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.student.universityEmailId">University Email Id</span></dt>
+        <dd>
+          <span>{{ student.universityEmailId }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.student.departmentId">Department Id</span></dt>
+        <dd>
+          <span>{{ student.departmentId }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.student.specialization">Specialization</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'universtyApp.Specialization.' + student.specialization }}">{{ student.specialization }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.student.degreeType">Degree Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'universtyApp.DegreeType.' + student.degreeType }}">{{ student.degreeType }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.student.isActive">Is Active</span></dt>
+        <dd>
+          <span>{{ student.isActive }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.student.isDegreeCompleted">Is Degree Completed</span></dt>
+        <dd>
+          <span>{{ student.isDegreeCompleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.student.currentSem">Current Sem</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'universtyApp.CurrentSem.' + student.currentSem }}">{{ student.currentSem }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/student', student.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

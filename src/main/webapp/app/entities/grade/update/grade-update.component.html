@@ -1,0 +1,79 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-grade-heading" data-cy="GradeCreateUpdateHeading" jhiTranslate="universtyApp.grade.home.createOrEditLabel">
+        Create or edit a Grade
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.grade.studentId" for="field_studentId">Student Id</label>
+          <input type="text" class="form-control" name="studentId" id="field_studentId" data-cy="studentId" formControlName="studentId" />
+          <div *ngIf="editForm.get('studentId')!.invalid && (editForm.get('studentId')!.dirty || editForm.get('studentId')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('studentId')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.grade.courseId" for="field_courseId">Course Id</label>
+          <input type="text" class="form-control" name="courseId" id="field_courseId" data-cy="courseId" formControlName="courseId" />
+          <div *ngIf="editForm.get('courseId')!.invalid && (editForm.get('courseId')!.dirty || editForm.get('courseId')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('courseId')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.grade.departmentId" for="field_departmentId">Department Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="departmentId"
+            id="field_departmentId"
+            data-cy="departmentId"
+            formControlName="departmentId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.grade.grade" for="field_grade">Grade</label>
+          <input type="number" class="form-control" name="grade" id="field_grade" data-cy="grade" formControlName="grade" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

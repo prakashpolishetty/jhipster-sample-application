@@ -24,30 +24,6 @@ springdoc:
   api-docs:
     enabled: false
 ---
-eureka:
-  client:
-    enabled: true
-    healthcheck:
-      enabled: true
-    fetch-registry: true
-    register-with-eureka: true
-    instance-info-replication-interval-seconds: 10
-    registry-fetch-interval-seconds: 10
-  instance:
-    appname: jhipstersampleapplication
-    instanceId: jhipstersampleapplication:${spring.application.instance-id:${random.value}}
-    lease-renewal-interval-in-seconds: 5
-    lease-expiration-duration-in-seconds: 10
-    status-page-url-path: ${management.endpoints.web.base-path}/info
-    health-check-url-path: ${management.endpoints.web.base-path}/health
-    metadata-map:
-      zone: primary # This is needed for the load balancer
-      profile: ${spring.profiles.active}
-      version: #project.version#
-      git-version: ${git.commit.id.describe:}
-      git-commit: ${git.commit.id.abbrev:}
-      git-branch: ${git.branch:}
-      context-path: ${server.servlet.context-path:}
 management:
   endpoints:
     web:
@@ -115,26 +91,8 @@ management:
             enabled: true
 
 spring:
-  autoconfigure:
-    exclude: org.springframework.boot.actuate.autoconfigure.metrics.jdbc.DataSourcePoolMetricsAutoConfiguration
   application:
-    name: jhipsterSampleApplication
-  cloud:
-    stream:
-      kafka:
-        binder:
-          replicationFactor: 1
-          auto-create-topics: true
-          brokers: localhost:9092
-      bindings:
-        binding-in-sse:
-          destination: sse-topic
-          content-type: text/plain
-          group: jhipster-sample-application
-        binding-out-sse:
-          destination: sse-topic
-          content-type: text/plain
-          group: jhipster-sample-application
+    name: universty
   profiles:
     # The commented value for `active` can be replaced with valid Spring profiles to load.
     # Otherwise, it will be filled in by maven when building the JAR file
@@ -165,9 +123,6 @@ spring:
       hibernate.jdbc.batch_size: 25
       hibernate.order_inserts: true
       hibernate.order_updates: true
-      # modify fetch size as necessary
-      hibernate.jdbc.fetch_size: 150
-      hibernate.criteria.literal_handling_mode: BIND
       hibernate.query.fail_on_pagination_over_collection_fetch: true
       hibernate.query.in_clause_parameter_padding: true
     hibernate:
@@ -184,13 +139,13 @@ spring:
       matching-strategy: ant_path_matcher
   task:
     execution:
-      thread-name-prefix: jhipster-sample-application-task-
+      thread-name-prefix: universty-task-
       pool:
         core-size: 2
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: jhipster-sample-application-scheduling-
+      thread-name-prefix: universty-scheduling-
       pool:
         size: 2
   thymeleaf:
@@ -221,7 +176,7 @@ info:
 
 jhipster:
   clientApp:
-    name: 'jhipsterSampleApplicationApp'
+    name: 'universtyApp'
   # By default CORS is disabled. Uncomment to enable.
   # cors:
   #   allowed-origins: "http://localhost:8100,http://localhost:9000"
@@ -231,12 +186,12 @@ jhipster:
   #   allow-credentials: true
   #   max-age: 1800
   mail:
-    from: jhipsterSampleApplication@localhost
+    from: universty@localhost
   api-docs:
     default-include-pattern: ${server.servlet.context-path:}/api/**
     management-include-pattern: ${server.servlet.context-path:}/management/**
-    title: Jhipster Sample Application API
-    description: Jhipster Sample Application API documentation
+    title: Universty API
+    description: Universty API documentation
     version: 0.0.1
     terms-of-service-url:
     contact-name:

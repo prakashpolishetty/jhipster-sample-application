@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="grade">
+      <h2 data-cy="gradeDetailsHeading"><span jhiTranslate="universtyApp.grade.detail.title">Grade</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ grade.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.grade.studentId">Student Id</span></dt>
+        <dd>
+          <span>{{ grade.studentId }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.grade.courseId">Course Id</span></dt>
+        <dd>
+          <span>{{ grade.courseId }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.grade.departmentId">Department Id</span></dt>
+        <dd>
+          <span>{{ grade.departmentId }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.grade.grade">Grade</span></dt>
+        <dd>
+          <span>{{ grade.grade }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/grade', grade.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

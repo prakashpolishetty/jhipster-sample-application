@@ -1,0 +1,131 @@
+
+application {
+  config {
+    baseName universty,
+    applicationType monolith,
+    packageName com.universty,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    clientFramework angular,
+    serverPort 8010
+    }
+  entities *
+}
+
+entity Student {
+ studentId UUID required,
+ name String required,
+ dateOfBirth String pattern(/^(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d|3[01])-(\\d{2})$/),
+ phoneNumber String pattern(/^\\+1 [1-9]\\d{2}-\\d{3}-\\d{4}$/),
+ personalEmailId String,
+ universityEmailId String,
+ departmentId Integer,
+ specialization Specialization,
+ degreeType DegreeType,
+ isActive Boolean,
+ isDegreeCompleted Boolean,
+ currentSem CurrentSem
+}
+
+entity Department{
+departmentId Integer  required,
+departmentName DepartmentName  required,
+isActive Boolean
+}
+
+entity Course{
+courseId String  required pattern(/^[A-Za-z]\\d{3}$/)
+courseName CourseName  required,
+description String ,
+isActive Boolean ,
+department Integer,
+degreeType DegreeType,
+isCore Boolean,
+specialization Specialization,
+startDateOfEnrollment String pattern(/^(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d|3[01])-(\\d{2})$/),
+lastDateOfEnrollment String pattern(/^(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d|3[01])-(\\d{2})$/),
+startDateOfCourse String pattern(/^(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d|3[01])-(\\d{2})$/),
+lastDateOfCourse String pattern(/^(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d|3[01])-(\\d{2})$/),
+lastDateOfCourseDrop String pattern(/^(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d|3[01])-(\\d{2})$/),
+waitingList Integer,
+numberOfEnrollments Integer,
+isEnrollmentRestricted Boolean,
+teacherID UUID,
+graderID UUID,
+classRoomNumber String,
+}
+entity Grade{
+StudentId UUID required,
+CourseId  String required,
+departmentId Integer,
+grade  Double
+}
+entity Teacher{
+facultyId UUID required,
+name String required,
+phoneNumber String required pattern(/^\\+1 [1-9]\\d{2}-\\d{3}-\\d{4}$/),
+designation Desigination,
+personalEmailId String,
+universityEmailId String,
+isActive Boolean,
+departmentId Integer,
+dateOfJoining String pattern(/^(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d|3[01])-(\\d{2})$/),
+dateOfLeaving String pattern(/^(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d|3[01])-(\\d{2})$/)
+}
+
+
+entity Address {
+lineOne String required,
+lineTwo String,
+aptNo String,
+city String,
+state String,
+country String,
+pinCode String  pattern(/^[1-9]0{4}$/)
+}
+
+enum CurrentSem{
+    FIRSTSEMESTER,
+    SECOUNDSEMESTER,
+    THIRDSEMESTER,
+    FOURTHSEMSTER,
+    FIFTHSEMSTER,
+    SIXTHSEMSTER,
+    SEVENTHSEMSTER,
+    EIGHTSEMSTER
+}
+enum DepartmentName{
+    COMPUTERSCIENCEENGINEERING,
+    ELECTRONICSANDCOMMUNICATIONALENGINEERING,
+    ELECTRONICSANDELECTRICALENGINEERING,
+    MANAGEMENTSCINENCE
+}
+enum Specialization{
+    COMPUTERSCIENCE,
+    DATASCIENCE,
+    BUSINESSMANAGEMENT,
+    BUINESSANALYTICS
+}
+enum DegreeType{
+    BACHELORS,
+    MASTERS,
+    PHD
+}
+
+enum CourseName{
+    DATASTRUCTURES,
+    ADVANCEOPERATINGSYSTEMS,
+    FSS
+}
+enum Desigination{
+    ASSISTENTPROFESSOR,
+    PROFESSOR,
+    TEACHINGASSISTENT,
+    RESERACHASSISTENT,
+    GRADER
+}
+
+
+
+
+

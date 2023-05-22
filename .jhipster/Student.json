@@ -1,0 +1,73 @@
+{
+  "applications": ["universty"],
+  "changelogDate": "20230522170801",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "student",
+  "fields": [
+    {
+      "fieldName": "studentId",
+      "fieldType": "UUID",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateOfBirth",
+      "fieldType": "String",
+      "fieldValidateRules": ["pattern"],
+      "fieldValidateRulesPattern": "^(0[1-9]|1[0-2])-(0[1-9]|1\\\\d|2\\\\d|3[01])-(\\\\d{2})$"
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["pattern"],
+      "fieldValidateRulesPattern": "^\\\\+1 [1-9]\\\\d{2}-\\\\d{3}-\\\\d{4}$"
+    },
+    {
+      "fieldName": "personalEmailId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "universityEmailId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "departmentId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "specialization",
+      "fieldType": "Specialization",
+      "fieldValues": "COMPUTERSCIENCE,DATASCIENCE,BUSINESSMANAGEMENT,BUINESSANALYTICS"
+    },
+    {
+      "fieldName": "degreeType",
+      "fieldType": "DegreeType",
+      "fieldValues": "BACHELORS,MASTERS,PHD"
+    },
+    {
+      "fieldName": "isActive",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isDegreeCompleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "currentSem",
+      "fieldType": "CurrentSem",
+      "fieldValues": "FIRSTSEMESTER,SECOUNDSEMESTER,THIRDSEMESTER,FOURTHSEMSTER,FIFTHSEMSTER,SIXTHSEMSTER,SEVENTHSEMSTER,EIGHTSEMSTER"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Student",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

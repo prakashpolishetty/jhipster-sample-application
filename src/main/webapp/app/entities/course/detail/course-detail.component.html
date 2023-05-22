@@ -1,0 +1,104 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="course">
+      <h2 data-cy="courseDetailsHeading"><span jhiTranslate="universtyApp.course.detail.title">Course</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ course.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.course.courseId">Course Id</span></dt>
+        <dd>
+          <span>{{ course.courseId }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.course.courseName">Course Name</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'universtyApp.CourseName.' + course.courseName }}">{{ course.courseName }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.course.description">Description</span></dt>
+        <dd>
+          <span>{{ course.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.course.isActive">Is Active</span></dt>
+        <dd>
+          <span>{{ course.isActive }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.course.department">Department</span></dt>
+        <dd>
+          <span>{{ course.department }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.course.degreeType">Degree Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'universtyApp.DegreeType.' + course.degreeType }}">{{ course.degreeType }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.course.isCore">Is Core</span></dt>
+        <dd>
+          <span>{{ course.isCore }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.course.specialization">Specialization</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'universtyApp.Specialization.' + course.specialization }}">{{ course.specialization }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.course.startDateOfEnrollment">Start Date Of Enrollment</span></dt>
+        <dd>
+          <span>{{ course.startDateOfEnrollment }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.course.lastDateOfEnrollment">Last Date Of Enrollment</span></dt>
+        <dd>
+          <span>{{ course.lastDateOfEnrollment }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.course.startDateOfCourse">Start Date Of Course</span></dt>
+        <dd>
+          <span>{{ course.startDateOfCourse }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.course.lastDateOfCourse">Last Date Of Course</span></dt>
+        <dd>
+          <span>{{ course.lastDateOfCourse }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.course.lastDateOfCourseDrop">Last Date Of Course Drop</span></dt>
+        <dd>
+          <span>{{ course.lastDateOfCourseDrop }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.course.waitingList">Waiting List</span></dt>
+        <dd>
+          <span>{{ course.waitingList }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.course.numberOfEnrollments">Number Of Enrollments</span></dt>
+        <dd>
+          <span>{{ course.numberOfEnrollments }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.course.isEnrollmentRestricted">Is Enrollment Restricted</span></dt>
+        <dd>
+          <span>{{ course.isEnrollmentRestricted }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.course.teacherID">Teacher ID</span></dt>
+        <dd>
+          <span>{{ course.teacherID }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.course.graderID">Grader ID</span></dt>
+        <dd>
+          <span>{{ course.graderID }}</span>
+        </dd>
+        <dt><span jhiTranslate="universtyApp.course.classRoomNumber">Class Room Number</span></dt>
+        <dd>
+          <span>{{ course.classRoomNumber }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/course', course.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+{
+  "universtyApp": {
+    "DegreeType": {
+      "null": "",
+      "BACHELORS": "BACHELORS",
+      "MASTERS": "MASTERS",
+      "PHD": "PHD"
+    }
+  }
+}

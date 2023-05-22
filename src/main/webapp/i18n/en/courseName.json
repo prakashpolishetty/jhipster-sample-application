@@ -1,0 +1,10 @@
+{
+  "universtyApp": {
+    "CourseName": {
+      "null": "",
+      "DATASTRUCTURES": "DATASTRUCTURES",
+      "ADVANCEOPERATINGSYSTEMS": "ADVANCEOPERATINGSYSTEMS",
+      "FSS": "FSS"
+    }
+  }
+}

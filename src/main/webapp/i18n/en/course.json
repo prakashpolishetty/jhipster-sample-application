@@ -1,0 +1,42 @@
+{
+  "universtyApp": {
+    "course": {
+      "home": {
+        "title": "Courses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Course",
+        "createOrEditLabel": "Create or edit a Course",
+        "notFound": "No Courses found"
+      },
+      "created": "A new Course is created with identifier {{ param }}",
+      "updated": "A Course is updated with identifier {{ param }}",
+      "deleted": "A Course is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Course {{ id }}?"
+      },
+      "detail": {
+        "title": "Course"
+      },
+      "id": "ID",
+      "courseId": "Course Id",
+      "courseName": "Course Name",
+      "description": "Description",
+      "isActive": "Is Active",
+      "department": "Department",
+      "degreeType": "Degree Type",
+      "isCore": "Is Core",
+      "specialization": "Specialization",
+      "startDateOfEnrollment": "Start Date Of Enrollment",
+      "lastDateOfEnrollment": "Last Date Of Enrollment",
+      "startDateOfCourse": "Start Date Of Course",
+      "lastDateOfCourse": "Last Date Of Course",
+      "lastDateOfCourseDrop": "Last Date Of Course Drop",
+      "waitingList": "Waiting List",
+      "numberOfEnrollments": "Number Of Enrollments",
+      "isEnrollmentRestricted": "Is Enrollment Restricted",
+      "teacherID": "Teacher ID",
+      "graderID": "Grader ID",
+      "classRoomNumber": "Class Room Number"
+    }
+  }
+}
