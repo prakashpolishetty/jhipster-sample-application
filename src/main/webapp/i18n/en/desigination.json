@@ -1,0 +1,12 @@
+{
+  "universtyApp": {
+    "Desigination": {
+      "null": "",
+      "ASSISTENTPROFESSOR": "ASSISTENTPROFESSOR",
+      "PROFESSOR": "PROFESSOR",
+      "TEACHINGASSISTENT": "TEACHINGASSISTENT",
+      "RESERACHASSISTENT": "RESERACHASSISTENT",
+      "GRADER": "GRADER"
+    }
+  }
+}

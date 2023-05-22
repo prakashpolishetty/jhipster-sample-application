@@ -1,0 +1,11 @@
+id;student_id;name;date_of_birth;phone_number;personal_email_id;university_email_id;department_id;specialization;degree_type;is_active;is_degree_completed;current_sem
+1;d753c4c9-d26a-4fd5-95ed-4272f84b37d1;Account drive Refined;"02-07-\dd";"\\1 9\dd-\ddd-\dddd";Iowa Intranet virtual;and open-source even-keeled;32278;COMPUTERSCIENCE;BACHELORS;true;true;SIXTHSEMSTER
+2;486df1d1-ad08-46e9-8efc-902ac42ccab5;Glens;"12-1\d-\dd";"\1 8\dd-\ddd-\dddd";system Developer Chief;Savings;62186;DATASCIENCE;PHD;false;false;SIXTHSEMSTER
+3;7d955fa2-d742-4122-b586-7fe71ca47d5a;Account;"03-30-\dd";"\\\\1 3\dd-\ddd-\dddd";PNG Virgin Buckinghamshire;cross-platform Utah Ukraine;82468;DATASCIENCE;PHD;false;false;SECOUNDSEMESTER
+4;345cb26b-1862-4cc8-964e-007b04db9080;withdrawal;"07-30-\dd";"\1 1\dd-\ddd-\dddd";Fiji Road Buckinghamshire;architecture Maine Frozen;1045;BUSINESSMANAGEMENT;MASTERS;false;true;EIGHTSEMSTER
+5;56a043af-3829-4a9f-81af-faec793c145b;Dynamic;"09-08-\dd";"\\1 5\dd-\ddd-\dddd";port Washington;Nevada;3712;BUSINESSMANAGEMENT;MASTERS;true;false;EIGHTSEMSTER
+6;60a2ffa3-8317-400e-9ac6-1bb300f73820;deposit;"01-1\d-\dd";"\1 6\dd-\ddd-\dddd";Chips Bacon;Pants;79533;DATASCIENCE;MASTERS;true;false;FOURTHSEMSTER
+7;72c58b02-3dc4-483a-b416-7bf998a9b0a1;California Ergonomic;"10-2\d-\dd";"\\\\\\1 3\dd-\ddd-\dddd";non-volatile USB generate;Buckinghamshire;98734;BUSINESSMANAGEMENT;BACHELORS;true;true;THIRDSEMESTER
+8;609968ad-d4d3-4188-91fd-b2028fd7d1f5;Bedfordshire transform Persevering;"10-04-\dd";"\\\\1 8\dd-\ddd-\dddd";deposit PCI plug-and-play;model Fish;40439;COMPUTERSCIENCE;MASTERS;true;false;EIGHTSEMSTER
+9;29f83a97-aea1-4532-9c89-5c80f698bdbc;Bedfordshire synthesizing;"10-2\d-\dd";"\\\\\1 8\dd-\ddd-\dddd";base;HTTP Dam Branding;39795;BUSINESSMANAGEMENT;BACHELORS;false;false;THIRDSEMESTER
+10;bc521aff-2455-456e-8896-724bbd63b9f1;up;"12-01-\dd";"\\\\\1 5\dd-\ddd-\dddd";Internal;indexing Producer;47080;DATASCIENCE;BACHELORS;true;true;SIXTHSEMSTER

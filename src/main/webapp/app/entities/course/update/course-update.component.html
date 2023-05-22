@@ -1,0 +1,342 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-course-heading" data-cy="CourseCreateUpdateHeading" jhiTranslate="universtyApp.course.home.createOrEditLabel">
+        Create or edit a Course
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.course.courseId" for="field_courseId">Course Id</label>
+          <input type="text" class="form-control" name="courseId" id="field_courseId" data-cy="courseId" formControlName="courseId" />
+          <div *ngIf="editForm.get('courseId')!.invalid && (editForm.get('courseId')!.dirty || editForm.get('courseId')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('courseId')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('courseId')?.errors?.pattern"
+              jhiTranslate="entity.validation.pattern"
+              [translateValues]="{ pattern: 'Course Id' }"
+            >
+              This field should follow pattern for Course Id.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.course.courseName" for="field_courseName">Course Name</label>
+          <select class="form-control" name="courseName" formControlName="courseName" id="field_courseName" data-cy="courseName">
+            <option [ngValue]="null">{{ 'universtyApp.CourseName.null' | translate }}</option>
+            <option *ngFor="let courseName of courseNameValues" [value]="courseName">
+              {{ 'universtyApp.CourseName.' + courseName | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('courseName')!.invalid && (editForm.get('courseName')!.dirty || editForm.get('courseName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('courseName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.course.description" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.course.isActive" for="field_isActive">Is Active</label>
+          <input type="checkbox" class="form-check" name="isActive" id="field_isActive" data-cy="isActive" formControlName="isActive" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.course.department" for="field_department">Department</label>
+          <input
+            type="number"
+            class="form-control"
+            name="department"
+            id="field_department"
+            data-cy="department"
+            formControlName="department"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.course.degreeType" for="field_degreeType">Degree Type</label>
+          <select class="form-control" name="degreeType" formControlName="degreeType" id="field_degreeType" data-cy="degreeType">
+            <option [ngValue]="null">{{ 'universtyApp.DegreeType.null' | translate }}</option>
+            <option *ngFor="let degreeType of degreeTypeValues" [value]="degreeType">
+              {{ 'universtyApp.DegreeType.' + degreeType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.course.isCore" for="field_isCore">Is Core</label>
+          <input type="checkbox" class="form-check" name="isCore" id="field_isCore" data-cy="isCore" formControlName="isCore" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.course.specialization" for="field_specialization">Specialization</label>
+          <select
+            class="form-control"
+            name="specialization"
+            formControlName="specialization"
+            id="field_specialization"
+            data-cy="specialization"
+          >
+            <option [ngValue]="null">{{ 'universtyApp.Specialization.null' | translate }}</option>
+            <option *ngFor="let specialization of specializationValues" [value]="specialization">
+              {{ 'universtyApp.Specialization.' + specialization | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.course.startDateOfEnrollment" for="field_startDateOfEnrollment"
+            >Start Date Of Enrollment</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="startDateOfEnrollment"
+            id="field_startDateOfEnrollment"
+            data-cy="startDateOfEnrollment"
+            formControlName="startDateOfEnrollment"
+          />
+          <div
+            *ngIf="
+              editForm.get('startDateOfEnrollment')!.invalid &&
+              (editForm.get('startDateOfEnrollment')!.dirty || editForm.get('startDateOfEnrollment')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('startDateOfEnrollment')?.errors?.pattern"
+              jhiTranslate="entity.validation.pattern"
+              [translateValues]="{ pattern: 'Start Date Of Enrollment' }"
+            >
+              This field should follow pattern for Start Date Of Enrollment.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.course.lastDateOfEnrollment" for="field_lastDateOfEnrollment"
+            >Last Date Of Enrollment</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastDateOfEnrollment"
+            id="field_lastDateOfEnrollment"
+            data-cy="lastDateOfEnrollment"
+            formControlName="lastDateOfEnrollment"
+          />
+          <div
+            *ngIf="
+              editForm.get('lastDateOfEnrollment')!.invalid &&
+              (editForm.get('lastDateOfEnrollment')!.dirty || editForm.get('lastDateOfEnrollment')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastDateOfEnrollment')?.errors?.pattern"
+              jhiTranslate="entity.validation.pattern"
+              [translateValues]="{ pattern: 'Last Date Of Enrollment' }"
+            >
+              This field should follow pattern for Last Date Of Enrollment.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.course.startDateOfCourse" for="field_startDateOfCourse"
+            >Start Date Of Course</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="startDateOfCourse"
+            id="field_startDateOfCourse"
+            data-cy="startDateOfCourse"
+            formControlName="startDateOfCourse"
+          />
+          <div
+            *ngIf="
+              editForm.get('startDateOfCourse')!.invalid &&
+              (editForm.get('startDateOfCourse')!.dirty || editForm.get('startDateOfCourse')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('startDateOfCourse')?.errors?.pattern"
+              jhiTranslate="entity.validation.pattern"
+              [translateValues]="{ pattern: 'Start Date Of Course' }"
+            >
+              This field should follow pattern for Start Date Of Course.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.course.lastDateOfCourse" for="field_lastDateOfCourse"
+            >Last Date Of Course</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastDateOfCourse"
+            id="field_lastDateOfCourse"
+            data-cy="lastDateOfCourse"
+            formControlName="lastDateOfCourse"
+          />
+          <div
+            *ngIf="
+              editForm.get('lastDateOfCourse')!.invalid &&
+              (editForm.get('lastDateOfCourse')!.dirty || editForm.get('lastDateOfCourse')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastDateOfCourse')?.errors?.pattern"
+              jhiTranslate="entity.validation.pattern"
+              [translateValues]="{ pattern: 'Last Date Of Course' }"
+            >
+              This field should follow pattern for Last Date Of Course.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.course.lastDateOfCourseDrop" for="field_lastDateOfCourseDrop"
+            >Last Date Of Course Drop</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastDateOfCourseDrop"
+            id="field_lastDateOfCourseDrop"
+            data-cy="lastDateOfCourseDrop"
+            formControlName="lastDateOfCourseDrop"
+          />
+          <div
+            *ngIf="
+              editForm.get('lastDateOfCourseDrop')!.invalid &&
+              (editForm.get('lastDateOfCourseDrop')!.dirty || editForm.get('lastDateOfCourseDrop')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastDateOfCourseDrop')?.errors?.pattern"
+              jhiTranslate="entity.validation.pattern"
+              [translateValues]="{ pattern: 'Last Date Of Course Drop' }"
+            >
+              This field should follow pattern for Last Date Of Course Drop.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.course.waitingList" for="field_waitingList">Waiting List</label>
+          <input
+            type="number"
+            class="form-control"
+            name="waitingList"
+            id="field_waitingList"
+            data-cy="waitingList"
+            formControlName="waitingList"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.course.numberOfEnrollments" for="field_numberOfEnrollments"
+            >Number Of Enrollments</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numberOfEnrollments"
+            id="field_numberOfEnrollments"
+            data-cy="numberOfEnrollments"
+            formControlName="numberOfEnrollments"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.course.isEnrollmentRestricted" for="field_isEnrollmentRestricted"
+            >Is Enrollment Restricted</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isEnrollmentRestricted"
+            id="field_isEnrollmentRestricted"
+            data-cy="isEnrollmentRestricted"
+            formControlName="isEnrollmentRestricted"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.course.teacherID" for="field_teacherID">Teacher ID</label>
+          <input type="text" class="form-control" name="teacherID" id="field_teacherID" data-cy="teacherID" formControlName="teacherID" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.course.graderID" for="field_graderID">Grader ID</label>
+          <input type="text" class="form-control" name="graderID" id="field_graderID" data-cy="graderID" formControlName="graderID" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="universtyApp.course.classRoomNumber" for="field_classRoomNumber">Class Room Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="classRoomNumber"
+            id="field_classRoomNumber"
+            data-cy="classRoomNumber"
+            formControlName="classRoomNumber"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

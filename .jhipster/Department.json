@@ -1,0 +1,31 @@
+{
+  "applications": ["universty"],
+  "changelogDate": "20230522170802",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "department",
+  "fields": [
+    {
+      "fieldName": "departmentId",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "departmentName",
+      "fieldType": "DepartmentName",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "COMPUTERSCIENCEENGINEERING,ELECTRONICSANDCOMMUNICATIONALENGINEERING,ELECTRONICSANDELECTRICALENGINEERING,MANAGEMENTSCINENCE"
+    },
+    {
+      "fieldName": "isActive",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Department",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

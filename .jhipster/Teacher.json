@@ -1,0 +1,65 @@
+{
+  "applications": ["universty"],
+  "changelogDate": "20230522170805",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "teacher",
+  "fields": [
+    {
+      "fieldName": "facultyId",
+      "fieldType": "UUID",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "pattern"],
+      "fieldValidateRulesPattern": "^\\\\+1 [1-9]\\\\d{2}-\\\\d{3}-\\\\d{4}$"
+    },
+    {
+      "fieldName": "designation",
+      "fieldType": "Desigination",
+      "fieldValues": "ASSISTENTPROFESSOR,PROFESSOR,TEACHINGASSISTENT,RESERACHASSISTENT,GRADER"
+    },
+    {
+      "fieldName": "personalEmailId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "universityEmailId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isActive",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "departmentId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "dateOfJoining",
+      "fieldType": "String",
+      "fieldValidateRules": ["pattern"],
+      "fieldValidateRulesPattern": "^(0[1-9]|1[0-2])-(0[1-9]|1\\\\d|2\\\\d|3[01])-(\\\\d{2})$"
+    },
+    {
+      "fieldName": "dateOfLeaving",
+      "fieldType": "String",
+      "fieldValidateRules": ["pattern"],
+      "fieldValidateRulesPattern": "^(0[1-9]|1[0-2])-(0[1-9]|1\\\\d|2\\\\d|3[01])-(\\\\d{2})$"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Teacher",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

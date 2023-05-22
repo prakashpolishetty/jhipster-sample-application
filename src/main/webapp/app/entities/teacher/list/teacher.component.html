@@ -1,0 +1,151 @@
+<div>
+  <h2 id="page-heading" data-cy="TeacherHeading">
+    <span jhiTranslate="universtyApp.teacher.home.title">Teachers</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="universtyApp.teacher.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-teacher"
+        [routerLink]="['/teacher/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="universtyApp.teacher.home.createLabel"> Create a new Teacher </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="teachers?.length === 0">
+    <span jhiTranslate="universtyApp.teacher.home.notFound">No Teachers found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="teachers && teachers.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="facultyId">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.teacher.facultyId">Faculty Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.teacher.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="phoneNumber">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.teacher.phoneNumber">Phone Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="designation">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.teacher.designation">Designation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="personalEmailId">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.teacher.personalEmailId">Personal Email Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="universityEmailId">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.teacher.universityEmailId">University Email Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="isActive">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.teacher.isActive">Is Active</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="departmentId">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.teacher.departmentId">Department Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dateOfJoining">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.teacher.dateOfJoining">Date Of Joining</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dateOfLeaving">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.teacher.dateOfLeaving">Date Of Leaving</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let teacher of teachers; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/teacher', teacher.id, 'view']">{{ teacher.id }}</a>
+          </td>
+          <td>{{ teacher.facultyId }}</td>
+          <td>{{ teacher.name }}</td>
+          <td>{{ teacher.phoneNumber }}</td>
+          <td jhiTranslate="{{ 'universtyApp.Desigination.' + teacher.designation }}">{{ teacher.designation }}</td>
+          <td>{{ teacher.personalEmailId }}</td>
+          <td>{{ teacher.universityEmailId }}</td>
+          <td>{{ teacher.isActive }}</td>
+          <td>{{ teacher.departmentId }}</td>
+          <td>{{ teacher.dateOfJoining }}</td>
+          <td>{{ teacher.dateOfLeaving }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/teacher', teacher.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/teacher', teacher.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(teacher)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

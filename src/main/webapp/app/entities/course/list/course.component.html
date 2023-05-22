@@ -1,0 +1,204 @@
+<div>
+  <h2 id="page-heading" data-cy="CourseHeading">
+    <span jhiTranslate="universtyApp.course.home.title">Courses</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="universtyApp.course.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-course"
+        [routerLink]="['/course/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="universtyApp.course.home.createLabel"> Create a new Course </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="courses?.length === 0">
+    <span jhiTranslate="universtyApp.course.home.notFound">No Courses found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="courses && courses.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="courseId">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.course.courseId">Course Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="courseName">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.course.courseName">Course Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.course.description">Description</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="isActive">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.course.isActive">Is Active</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="department">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.course.department">Department</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="degreeType">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.course.degreeType">Degree Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="isCore">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.course.isCore">Is Core</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="specialization">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.course.specialization">Specialization</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="startDateOfEnrollment">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.course.startDateOfEnrollment">Start Date Of Enrollment</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastDateOfEnrollment">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.course.lastDateOfEnrollment">Last Date Of Enrollment</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="startDateOfCourse">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.course.startDateOfCourse">Start Date Of Course</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastDateOfCourse">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.course.lastDateOfCourse">Last Date Of Course</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastDateOfCourseDrop">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.course.lastDateOfCourseDrop">Last Date Of Course Drop</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="waitingList">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.course.waitingList">Waiting List</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="numberOfEnrollments">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.course.numberOfEnrollments">Number Of Enrollments</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="isEnrollmentRestricted">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.course.isEnrollmentRestricted">Is Enrollment Restricted</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="teacherID">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.course.teacherID">Teacher ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="graderID">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.course.graderID">Grader ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="classRoomNumber">
+            <div class="d-flex">
+              <span jhiTranslate="universtyApp.course.classRoomNumber">Class Room Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of courses; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/course', course.id, 'view']">{{ course.id }}</a>
+          </td>
+          <td>{{ course.courseId }}</td>
+          <td jhiTranslate="{{ 'universtyApp.CourseName.' + course.courseName }}">{{ course.courseName }}</td>
+          <td>{{ course.description }}</td>
+          <td>{{ course.isActive }}</td>
+          <td>{{ course.department }}</td>
+          <td jhiTranslate="{{ 'universtyApp.DegreeType.' + course.degreeType }}">{{ course.degreeType }}</td>
+          <td>{{ course.isCore }}</td>
+          <td jhiTranslate="{{ 'universtyApp.Specialization.' + course.specialization }}">{{ course.specialization }}</td>
+          <td>{{ course.startDateOfEnrollment }}</td>
+          <td>{{ course.lastDateOfEnrollment }}</td>
+          <td>{{ course.startDateOfCourse }}</td>
+          <td>{{ course.lastDateOfCourse }}</td>
+          <td>{{ course.lastDateOfCourseDrop }}</td>
+          <td>{{ course.waitingList }}</td>
+          <td>{{ course.numberOfEnrollments }}</td>
+          <td>{{ course.isEnrollmentRestricted }}</td>
+          <td>{{ course.teacherID }}</td>
+          <td>{{ course.graderID }}</td>
+          <td>{{ course.classRoomNumber }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/course', course.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/course', course.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(course)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

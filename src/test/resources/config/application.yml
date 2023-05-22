@@ -13,33 +13,9 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
-eureka:
-  client:
-    enabled: false
-  instance:
-    appname: jhipsterSampleApplication
-    instanceId: jhipsterSampleApplication:${spring.application.instance-id:${random.value}}
-
 spring:
   application:
-    name: jhipsterSampleApplication
-  cloud:
-    config:
-      enabled: false
-    stream:
-      kafka:
-        binder:
-          replicationFactor: 1
-          auto-create-topics: true
-        bindings:
-          binding-in-sse:
-            destination: sse-topic
-            content-type: text/plain
-            group: jhipster-sample-application
-          binding-out-sse:
-            destination: sse-topic
-            content-type: text/plain
-            group: jhipster-sample-application
+    name: universty
   # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
   liquibase:
     contexts: test
@@ -57,13 +33,13 @@ spring:
     basename: i18n/messages
   task:
     execution:
-      thread-name-prefix: jhipster-sample-application-task-
+      thread-name-prefix: universty-task-
       pool:
         core-size: 1
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: jhipster-sample-application-scheduling-
+      thread-name-prefix: universty-scheduling-
       pool:
         size: 20
   thymeleaf:
@@ -80,9 +56,9 @@ server:
 # ===================================================================
 jhipster:
   clientApp:
-    name: 'jhipsterSampleApplicationApp'
+    name: 'universtyApp'
   mail:
-    from: jhipsterSampleApplication@localhost.com
+    from: universty@localhost.com
     base-url: http://127.0.0.1:8080
   logging:
     # To test json console appender
